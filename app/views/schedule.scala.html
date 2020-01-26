@@ -1,0 +1,49 @@
+@()(implicit request: play.mvc.Http.Request)
+@views.html.layouts.navBar("New Event", null) {<link rel="stylesheet" media="all" href='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/core/main.min.css")'>
+	<link rel="stylesheet" media="all" href='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/bootstrap/main.min.css")'>
+	<link rel="stylesheet" media="all" href='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/daygrid/main.min.css")'>
+	<link rel="stylesheet" media="all" href='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/timegrid/main.min.css")'>
+	<link rel="stylesheet" media="all" href='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/list/main.min.css")'>
+	<link rel="stylesheet" media="all" href='@routes.Assets.at("libraries/chart-js/2.8.0/Chart.min.css")'>
+	<link rel="stylesheet" media="all" href='@routes.Assets.at("stylesheets/navMenuCalendar.css")'>
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("libraries/bootstrap/datetimepicker/css/bootstrap-datetimepicker.min.css")">
+	<link rel="stylesheet" media="screen" href="@routes.Assets.versioned("libraries/timepicker/jquery.ui.timepicker.css")">
+}{
+	<form id="filterHolders" hidden>
+		@helper.CSRF.formField
+		<input type="hidden" id="calendarOwner" value="@request.session().get("user")" readonly>
+		<input type="hidden" id="calendarFilter" value="ALL" readonly>
+		<input type="hidden" id="calendarSelector" value="NONE" readonly>
+		<input type="hidden" id="calendarFilter_btn" value="ALL_btn" readonly>
+		<input type="hidden" id="calendarSelector_btn" value="NONE_btn" readonly>
+	</form>
+	<nav class="navbar navbar-collapse navbar-light bg-light justify-content-end row">
+		<a class="navbar-brand">@request.session().get("user")</a>
+		<div class="collapse navbar-collapse" id="calendarSelectors">
+			<div class="row" id="filterMenu">
+				<a id="ALL_btn" class="col-12 btn btn-info calendar-filter disabled" href="#" data-selected="ALL"><div class="ALL"></div>&nbsp;&nbsp;<div class="d-inline-block">("enums.EventCategory.ALL")</div></a>
+				<a id="PHYSICALHEALTH_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="PHYSICALHEALTH"><div><div class="PHYSICALHEALTH"></div>&nbsp;&nbsp;("enums.EventCategory.PHYSICALHEALTH")</div></a>
+				<a id="MENTALHEALTH_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="MENTALHEALTH"><div><div class="MENTALHEALTH"></div>&nbsp;&nbsp;("enums.EventCategory.MENTALHEALTH")</div></a>
+				<a id="DRUGS_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="DRUGS"><div><div class="DRUGS"></div>&nbsp;&nbsp;("enums.EventCategory.DRUGS")</div></a>
+				<a id="BEHAVIOR_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="BEHAVIOR"><div><div class="BEHAVIOR"></div>&nbsp;&nbsp;("enums.EventCategory.BEHAVIOR")</div></a>
+				<a id="SELFCARE_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="SELFCARE"><div><div class="SELFCARE"></div>&nbsp;&nbsp;("enums.EventCategory.SELFCARE")</div></a>
+				<a id="EDUCATION_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="EDUCATION"><div><div class="EDUCATION"></div>&nbsp;&nbsp;("enums.EventCategory.EDUCATION")</div></a>
+				<a id="FAMILY_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="FAMILY"><div><div class="FAMILY"></div>&nbsp;&nbsp;("enums.EventCategory.FAMILY")</div></a>
+				<a id="OTHER_btn" class="col-12 col-sm-6 col-lg-3 btn btn-info text-left calendar-filter" href="#" data-selected="OTHER"><div><div class="OTHER"></div>&nbsp;&nbsp;("enums.EventCategory.OTHER")</div></a>
+			</div>
+
+		</div>
+	</nav>
+	<div class="align-top col-12" id="calendarDiv"><div id='calendar'></div></div>
+}{
+	<script src="@routes.Assets.at("libraries/bootstrap/datetimepicker/js/locales/bootstrap-datetimepicker.fr.js")" type="text/javascript"></script>
+	<script src="@routes.Assets.at("libraries/bootstrap/datetimepicker/js/bootstrap-datetimepicker.min.js")" type="text/javascript"></script>
+	<script src='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/core/main.min.js")'></script>
+	<script src='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/core/locales-all.min.js")'></script>
+	<script src='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/bootstrap/main.min.js")'></script>
+	<script src='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/daygrid/main.min.js")'></script>
+	<script src='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/timegrid/main.min.js")'></script>
+	<script src='@routes.Assets.at("libraries/fullcalendar/4.2.0/packages/list/main.min.js")'></script>
+	<script src='@routes.Assets.at("libraries/chart-js/2.8.0/Chart.bundle.min.js")'></script>
+	<script src='@routes.Assets.at("javascripts/navMenuCalendar.js")'></script>
+}

@@ -1,0 +1,28 @@
+@import helper._
+@(dynamicForm: DynamicForm)(implicit request: play.mvc.Http.Request)
+@views.html.layouts.navBar("New Event", null) {<link rel="stylesheet" href="@routes.Assets.at("stylesheets/login.css")">
+}{
+	<div class="box">
+		<form method="POST" action="">
+			<fieldset hidden>@CSRF.formField</fieldset>
+			<div class="inputBox">
+				<input type="text" name="eventName" id="eventName" required value='@dynamicForm.value("eventName").orElse("")'>
+				<label for="eventName">Event Name</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="eventDescription" id="eventDescription" required value='@dynamicForm.value("eventDescription").orElse("")'>
+				<label for="eventDescription">Event Description</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="eventStart" id="eventStart" required value='@dynamicForm.value("eventStart").orElse("")'>
+				<label for="eventStart">Event Start</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="eventEnd" id="eventEnd" required value='@dynamicForm.value("eventEnd").orElse("")'>
+				<label for="eventEnd">Event End</label>
+			</div>
+			<input type="submit" name="" value="submit">
+		</form>
+	</div>
+}{
+}

@@ -1,0 +1,19 @@
+.ALL,.PHYSICALHEALTH,.MENTALHEALTH,.DRUGS,.BEHAVIOR,.SELFCARE,.EDUCATION,.FAMILY,.OTHER {
+	width: 20px;
+	height: 20px;
+	border: 1px solid black;
+	display: inline-block;
+	vertical-align: middle !important;
+	border-radius: 50% !important;
+}
+.ALL{background-color: white;}
+.PHYSICALHEALTH{background-color: yellow;}
+.MENTALHEALTH{background-color: forestgreen;}
+.DRUGS{background-color: red;}
+.BEHAVIOR{background-color: darkviolet;}
+.SELFCARE{background-color: blue;}
+.EDUCATION{background-color: turquoise;}
+.FAMILY{background-color: hotpink;}
+.OTHER{background-color: grey;}
+
+.calculator-row:nth-child(odd) {background-color: #d1d1d1;}

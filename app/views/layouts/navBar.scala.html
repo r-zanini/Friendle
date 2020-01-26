@@ -1,0 +1,30 @@
+@(title: String, user: User)(atHead: Html)(atBody: Html)(atFooter: Html)(implicit request: play.mvc.Http.Request)
+@views.html.layouts.main(title){@atHead} {
+	<nav id="navBar" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#"><h1><strong>Friendle</strong></h1></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBarContent" aria-controls="navBarContent" aria-expanded="false" aria-label="Toggle navigation">
+			<i class="fas fa-bars navImg"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navBarContent">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item text-center">
+					<a class="nav-link  @if(!title.equals("My Schedule")) {active}" href='@routes.ViewController.viewSchedule()'><div><i class="far fa-calendar-alt navImg"></i></div><div>My Schedule</div></a>
+				</li>
+				<li class="nav-item text-center @if(!title.equals("New Event")) {active}">
+					<a class="nav-link" href='@routes.ViewController.newEventPage()'><div><i class="fas fa-calendar-plus navImg"></i></div><div>New Event</div></a>
+				</li>
+				<li class="nav-item text-center @if(!title.equals("Search Events")) {active}">
+					<a class="nav-link" href='#'><div><i class="fas fa-search navImg"></i></div><div>Search Events</div></a>
+				</li>
+				<li class="nav-item text-center @if(!title.equals("Events for You")) {active}">
+					<a class="nav-link" href='#'><div><i class="fas fa-comment navImg"></i></div><div>Events for You</div></a>
+				</li>
+				<li class="nav-item text-center">
+					<a class="nav-link active" href='@routes.ViewController.logout()'><div><i class="fas fa-sign-out-alt navImg"></i></div><div>Sign Out</div></a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+<br /><br /><br /><br />
+	@atBody
+}{@atFooter}

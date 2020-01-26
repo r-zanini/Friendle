@@ -1,0 +1,19 @@
+@import helper._
+@(dynamicForm: DynamicForm)(implicit request: play.mvc.Http.Request)
+@views.html.layouts.offline("Log In"){
+	<div class="box">
+		<h2>Login</h2>
+		<form method="POST" action="">
+			<fieldset hidden>@CSRF.formField</fieldset>
+			<div class="inputBox">
+				<input type="text" name="userName" id="userName" required value='@dynamicForm.value("userName").orElse("")'>
+				<label for="userName">Username</label>
+			</div>
+			<div class="inputBox">
+				<input type="password" name="userPassword" id="userPassword" required>
+				<label for="userPassword">Password</label>
+			</div>
+			<input type="submit" value="submit">
+		</form>
+	</div>
+}

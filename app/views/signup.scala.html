@@ -1,0 +1,39 @@
+@import helper._
+@(dynamicForm: DynamicForm)(implicit request: play.mvc.Http.Request)
+@views.html.layouts.offline("Sign Up"){
+	<div class="box">
+		<h2>Sign Up @dynamicForm.get("userName")</h2>
+		<form method="POST" action="">
+			<fieldset hidden>@CSRF.formField</fieldset>
+			<div class="inputBox">
+				<input type="text" name="userName" id="userName" required value='@dynamicForm.value("userName").orElse("")'>
+				<label for="userName">Username</label>
+			</div>
+			<div class="inputBox">
+				<input type="password" name="userPassword" id="userPassword" required value='@dynamicForm.value("userPassword").orElse("")'>
+				<label for="userPassword">Password</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="userEmail" id="userEmail" required value='@dynamicForm.value("userEmail").orElse("")'>
+				<label for="userEmail">Email</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="firstName" id="firstName" required value='@dynamicForm.value("firstName").orElse("")'>
+				<label for="firstName">First Name</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="lastName" id="lastName" required value='@dynamicForm.value("lastName").orElse("")'>
+				<label for="lastName">Last Name</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="phoneNumber" id="phoneNumber" required value='@dynamicForm.value("phoneNumber").orElse("")'>
+				<label for="phoneNumber">Phone Number</label>
+			</div>
+			<div class="inputBox">
+				<input type="text" name="userAddress" id="userAddress" required value='@dynamicForm.value("userAddress").orElse("")'>
+				<label for="userAddress">Address</label>
+			</div>
+			<input type="submit" name="" value="submit">
+		</form>
+	</div>
+}
